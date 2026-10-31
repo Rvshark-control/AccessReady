@@ -9,6 +9,9 @@ const atkinson = Atkinson_Hyperlegible_Next({
   variable: "--font-atkinson",
   subsets: ["latin"],
   display: "swap",
+  // next/font has no metric overrides for this family; fall back to the system UI font instead.
+  adjustFontFallback: false,
+  fallback: ["ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Arial", "sans-serif"],
 });
 
 const fraunces = Fraunces({

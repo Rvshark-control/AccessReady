@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { FlaskConical, Menu, Sparkles, X } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 import { cn } from "@/utils/cn";
@@ -13,8 +13,57 @@ const NAV = [
   { href: "/compare", label: "Compare clinics" },
 ];
 
-export function SiteHeader() {
+type Variant = "desktop" | "mobile";
+
+const LINK_CLASSES: Record<Variant, string> = {
+  desktop: cn(
+    "rounded-full px-4 py-2 text-[0.975rem] font-bold text-ink-soft transition-colors hover:bg-plum-100 hover:text-night-900",
+    "aria-[current=page]:bg-plum-100 aria-[current=page]:text-night-900",
+  ),
+  mobile:
+    "flex min-h-12 items-center rounded-2xl px-4 text-lg font-bold text-night-900 hover:bg-plum-100 aria-[current=page]:bg-plum-100",
+};
+
+/** Renders the nav links; `pathname` is null while the URL isn't known yet (static shell). */
+function NavLinkList({
+  variant,
+  pathname,
+  onNavigate,
+}: {
+  variant: Variant;
+  pathname: string | null;
+  onNavigate?: () => void;
+}) {
+  return NAV.map((item) => {
+    const link = (
+      <Link
+        href={item.href}
+        onClick={onNavigate}
+        aria-current={!item.href.includes("#") && pathname === item.href ? "page" : undefined}
+        className={LINK_CLASSES[variant]}
+      >
+        {item.label}
+      </Link>
+    );
+    return variant === "mobile" ? <li key={item.href}>{link}</li> : <span key={item.href}>{link}</span>;
+  });
+}
+
+function CurrentNavLinks(props: { variant: Variant; onNavigate?: () => void }) {
+  // The pathname is URL data. Reading it inside Suspense keeps every route's shell prerenderable.
   const pathname = usePathname();
+  return <NavLinkList {...props} pathname={pathname} />;
+}
+
+function NavLinks(props: { variant: Variant; onNavigate?: () => void }) {
+  return (
+    <Suspense fallback={<NavLinkList {...props} pathname={null} />}>
+      <CurrentNavLinks {...props} />
+    </Suspense>
+  );
+}
+
+export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const menuId = useId();
   const toggleRef = useRef<HTMLButtonElement>(null);
@@ -34,29 +83,15 @@ export function SiteHeader() {
     return () => document.removeEventListener("keydown", onKey);
   }, [open]);
 
-  const isCurrent = (href: string) => !href.includes("#") && pathname === href;
-
   return (
-    <header className="sticky top-0 z-40 border-b border-line/70 bg-cream/85 backdrop-blur-md supports-[backdrop-filter]:bg-cream/75">
+    <header className="no-print sticky top-0 z-40 border-b border-line/70 bg-cream/85 backdrop-blur-md supports-[backdrop-filter]:bg-cream/75">
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link href="/" className="rounded-xl" aria-label="AccessReady home">
           <Logo />
         </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
-          {NAV.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              aria-current={isCurrent(item.href) ? "page" : undefined}
-              className={cn(
-                "rounded-full px-4 py-2 text-[0.975rem] font-bold text-ink-soft transition-colors hover:bg-plum-100 hover:text-night-900",
-                "aria-[current=page]:bg-plum-100 aria-[current=page]:text-night-900",
-              )}
-            >
-              {item.label}
-            </Link>
-          ))}
+          <NavLinks variant="desktop" />
         </nav>
 
         <div className="flex items-center gap-2">
@@ -85,25 +120,9 @@ export function SiteHeader() {
         </div>
       </div>
 
-      <nav
-        id={menuId}
-        aria-label="Main"
-        hidden={!open}
-        className="border-t border-line bg-cream px-4 pb-5 pt-3 md:hidden"
-      >
+      <nav id={menuId} aria-label="Main" hidden={!open} className="border-t border-line bg-cream px-4 pb-5 pt-3 md:hidden">
         <ul className="flex flex-col gap-1">
-          {NAV.map((item) => (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                onClick={() => setOpen(false)}
-                aria-current={isCurrent(item.href) ? "page" : undefined}
-                className="flex min-h-12 items-center rounded-2xl px-4 text-lg font-bold text-night-900 hover:bg-plum-100 aria-[current=page]:bg-plum-100"
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
+          <NavLinks variant="mobile" onNavigate={() => setOpen(false)} />
           <li>
             <Link
               href="/needs?demo=1"

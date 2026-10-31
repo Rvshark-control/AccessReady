@@ -13,13 +13,14 @@ import {
   Send,
 } from "lucide-react";
 import { LogoMark } from "@/components/brand/Logo";
+import { FrontDeskCard } from "@/components/checklist/FrontDeskCard";
 import { sortResults } from "@/components/results/ResultsView";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { FictionalDataNotice } from "@/components/ui/FictionalDataNotice";
 import { EmptyState, ErrorState, LoadingState } from "@/components/ui/States";
 import { MatchStatusBadge } from "@/components/ui/StatusBadge";
 import type { ClinicMatchResult, RequirementId } from "@/types/api";
-import { buildChecklistText, buildQuestionsText, checklistFileName } from "@/utils/checklist";
+import { buildChecklistText, buildCopyText, checklistFileName } from "@/utils/checklist";
 import { cn, plural } from "@/utils/cn";
 import { hrefWithNeeds } from "@/utils/needs-param";
 import { REQUIREMENTS, requirementLabel } from "@/utils/requirements";
@@ -127,15 +128,17 @@ function ChecklistDocument({ result, needs }: { result: ClinicMatchResult; needs
   const confirmed = result.checks.filter((c) => c.status === "CONFIRMED");
 
   async function copyQuestions() {
-    const text = buildQuestionsText(result);
+    const text = buildCopyText(result, needs);
     try {
       if (!navigator.clipboard?.writeText) throw new Error("Clipboard API unavailable");
       await navigator.clipboard.writeText(text);
       setManualText(null);
-      setMessage(`Copied ${plural(questions.length, "question")} for ${result.clinicName} to your clipboard.`);
+      setMessage(
+        `Copied ${plural(questions.length, "question")} and ${plural(needs.length, "request")} for ${result.clinicName} to your clipboard.`,
+      );
     } catch {
       setManualText(text);
-      setMessage("Your browser blocked automatic copying. The questions are selected in the box below. Press Control+C or Command+C to copy them.");
+      setMessage("Your browser blocked automatic copying. The text is selected in the box below. Press Control+C or Command+C to copy it.");
       requestAnimationFrame(() => {
         manualRef.current?.focus();
         manualRef.current?.select();
@@ -159,6 +162,7 @@ function ChecklistDocument({ result, needs }: { result: ClinicMatchResult; needs
 
   return (
     <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_22rem]">
+      <div className="flex min-w-0 flex-col gap-10">
       <article
         aria-labelledby="checklist-title"
         className="overflow-hidden rounded-[1.75rem] border border-line bg-white shadow-lift print:border-0 print:shadow-none"
@@ -254,6 +258,9 @@ function ChecklistDocument({ result, needs }: { result: ClinicMatchResult; needs
         </div>
       </article>
 
+      <FrontDeskCard clinicName={result.clinicName} needs={needs} />
+      </div>
+
       <aside aria-labelledby="checklist-actions" className="no-print flex flex-col gap-4 lg:sticky lg:top-24">
         <div className="rounded-[1.75rem] border border-line bg-white p-6 shadow-card">
           <h2 id="checklist-actions" className="text-lg font-bold text-night-900">
@@ -261,7 +268,7 @@ function ChecklistDocument({ result, needs }: { result: ClinicMatchResult; needs
           </h2>
           <div className="mt-4 flex flex-col gap-3">
             <Button variant="primary" icon={<Copy />} onClick={copyQuestions} className="w-full">
-              Copy questions
+              Copy questions &amp; requests
             </Button>
             <Button variant="purple" icon={<Download />} onClick={download} className="w-full">
               Download as text file
@@ -276,7 +283,7 @@ function ChecklistDocument({ result, needs }: { result: ClinicMatchResult; needs
           {manualText !== null ? (
             <div className="mt-3">
               <label htmlFor={manualId} className="text-sm font-bold text-night-900">
-                Questions to copy
+                Checklist text to copy
               </label>
               <textarea
                 id={manualId}

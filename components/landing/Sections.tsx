@@ -35,7 +35,7 @@ const STEPS = [
   {
     icon: ListChecks,
     title: "Prepare for your appointment",
-    body: "Get a checklist of the exact questions to ask the clinic. Copy it or download it before you call. Nothing is sent for you.",
+    body: "Get the exact questions to ask before you go, plus a front-desk card to show at check-in. Copy, download, or print it. Nothing is sent for you.",
   },
 ];
 

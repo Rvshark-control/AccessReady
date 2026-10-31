@@ -161,7 +161,12 @@ export function CompareView({ needs }: { needs: RequirementId[] }) {
         </div>
 
         {/* Clinic cards: full detail on small screens, a profile summary on desktop */}
-        <ul className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <ul
+          className={cn(
+            "grid gap-5 md:grid-cols-2",
+            clinics.length === 3 || clinics.length > 4 ? "xl:grid-cols-3" : clinics.length === 4 && "xl:grid-cols-4",
+          )}
+        >
           {clinics.map((clinic) => (
             <li key={clinic.id} className="flex">
               <ClinicCard clinic={clinic} rows={rows} needs={needs} />

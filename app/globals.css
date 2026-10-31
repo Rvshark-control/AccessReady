@@ -306,6 +306,38 @@
   }
 }
 
+/* Front-desk card shown full screen on a phone or tablet at check-in. */
+.front-desk-card:fullscreen {
+  display: flex;
+  flex-direction: column;
+  /* "safe" keeps the top reachable when the card is taller than the screen. */
+  justify-content: flex-start;
+  justify-content: safe center;
+  overflow: auto;
+  border: 0;
+  border-radius: 0;
+  background-color: var(--color-cream);
+  padding: 6vmin;
+  zoom: 1.35;
+}
+
+.front-desk-card::backdrop {
+  background-color: var(--color-cream);
+}
+
+/* The in-card exit button only exists while the card is full screen (unlayered, so it beats utilities). */
+.front-desk-exit {
+  display: none;
+}
+
+.front-desk-card:fullscreen .front-desk-exit {
+  display: inline-flex;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+
 /* Print: the checklist page should print cleanly. */
 @media print {
   .no-print {

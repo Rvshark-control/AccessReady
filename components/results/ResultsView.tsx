@@ -62,10 +62,10 @@ export function ResultsView({ needs }: { needs: RequirementId[] }) {
     );
   }
 
-  const counts = MATCH_STATUSES.map((status) => ({
-    status,
-    count: results.filter((r) => r.status === status).length,
-  }));
+  // Same order as the clinic cards: ready, needs verification, not ready, incomplete.
+  const counts = [...MATCH_STATUSES]
+    .sort((a, b) => MATCH_STATUS_META[a].rank - MATCH_STATUS_META[b].rank)
+    .map((status) => ({ status, count: results.filter((r) => r.status === status).length }));
   const announcement = `Results ready for ${plural(results.length, "fictional clinic")}: ${counts
     .filter((c) => c.count > 0)
     .map((c) => `${c.count} ${MATCH_STATUS_META[c.status].label.toLowerCase()}`)

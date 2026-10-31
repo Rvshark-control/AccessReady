@@ -1,5 +1,5 @@
 import type { ClinicMatchResult, RequirementId } from "@/types/api";
-import { requirementLabel } from "@/utils/requirements";
+import { REQUIREMENTS, requirementLabel } from "@/utils/requirements";
 import { getMatchStatusMeta } from "@/utils/status";
 
 /**
@@ -32,7 +32,7 @@ export function buildChecklistText(
     `COMPATIBILITY STATUS (demonstration data): ${status.label.toUpperCase()}`,
     `Confirmed: ${result.confirmedCount}   Unavailable: ${result.unavailableCount}   Unknown: ${result.unknownCount}`,
     "",
-    "QUESTIONS TO ASK THE CLINIC",
+    "BEFORE YOUR VISIT: QUESTIONS TO ASK THE CLINIC",
   ];
 
   if (result.verificationQuestions.length > 0) {
@@ -44,6 +44,8 @@ export function buildChecklistText(
     lines.push("No open questions in the demonstration data.");
     lines.push("Confirm your accommodations when you book. Records can change.");
   }
+
+  lines.push("", "AT CHECK-IN: REQUESTS FOR THE FRONT DESK", ...frontDeskRequests(needs).map((r) => `[ ] ${r}`));
 
   if (confirmed.length > 0) {
     lines.push("", "CONFIRMED IN THE DEMO RECORD (mention these when you book)");
@@ -62,17 +64,25 @@ export function buildChecklistText(
   return lines.join("\n");
 }
 
-/** Just the questions, ready to paste into an email, a patient portal message, or notes. */
-export function buildQuestionsText(result: ClinicMatchResult): string {
-  if (result.verificationQuestions.length === 0) {
-    return `No open accessibility questions for ${result.clinicName} in the AccessReady demonstration data.\n`;
+/** One plain request per selected need, for the front desk on the day of the visit. */
+export function frontDeskRequests(needs: readonly RequirementId[]): string[] {
+  return needs.map((id) => REQUIREMENTS[id].request);
+}
+
+/** Questions plus requests, ready to paste into an email, a patient-portal message, or notes. */
+export function buildCopyText(result: ClinicMatchResult, needs: readonly RequirementId[]): string {
+  const lines: string[] = [];
+  if (result.verificationQuestions.length > 0) {
+    lines.push(
+      `Accessibility questions for ${result.clinicName}:`,
+      "",
+      ...result.verificationQuestions.map((q, i) => `${i + 1}. ${q}`),
+    );
+  } else {
+    lines.push(`No open accessibility questions for ${result.clinicName} in the AccessReady demonstration data.`);
   }
-  return [
-    `Accessibility questions for ${result.clinicName}:`,
-    "",
-    ...result.verificationQuestions.map((q, i) => `${i + 1}. ${q}`),
-    "",
-  ].join("\n");
+  lines.push("", "Requests for my visit:", "", ...frontDeskRequests(needs).map((r) => `- ${r}`), "");
+  return lines.join("\n");
 }
 
 export function checklistFileName(clinicName: string): string {
