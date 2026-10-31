@@ -1,0 +1,318 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   AccessReady design tokens
+   Brand: deep purple #24143D · purple #6E4AA6 · orange #FF8A2A · cream #FFF8F0
+   Contrast notes (WCAG 2.2):
+   - Orange #FF8A2A is a fill color only. Text on it uses night-900 (7.2:1).
+   - pumpkin-700 is the text-safe orange on light surfaces.
+   - Status colors always come with an icon and a text label.
+   ========================================================================== */
+
+@theme {
+  --color-night-950: #170d29;
+  --color-night-900: #24143d;
+  --color-night-800: #2f1b4f;
+  --color-night-700: #3d2566;
+
+  --color-plum-800: #4a3173;
+  --color-plum-700: #5a3c8c;
+  --color-plum-600: #6e4aa6;
+  --color-plum-500: #8462bd;
+  --color-plum-400: #a387d3;
+  --color-plum-300: #c3b0e6;
+  --color-plum-200: #ddd1f2;
+  --color-plum-100: #eee7fa;
+  --color-plum-50: #f7f3fd;
+
+  --color-pumpkin-800: #8a3c08;
+  --color-pumpkin-700: #a3470a;
+  --color-pumpkin-600: #e06d12;
+  --color-pumpkin-500: #ff8a2a;
+  --color-pumpkin-400: #ffa152;
+  --color-pumpkin-300: #ffbd85;
+  --color-pumpkin-200: #ffd6b3;
+  --color-pumpkin-100: #ffeadb;
+  --color-pumpkin-50: #fff5ec;
+
+  --color-cream: #fff8f0;
+  --color-cream-100: #fbf1e6;
+  --color-cream-200: #f4e6d6;
+
+  --color-ink: #24143d;
+  --color-ink-soft: #4b3d63;
+  --color-ink-muted: #5f5275;
+  --color-line: #e8deea;
+  --color-line-strong: #cfc2db;
+
+  /* Status: READY / CONFIRMED */
+  --color-ready-800: #075232;
+  --color-ready-700: #0a6b40;
+  --color-ready-600: #128652;
+  --color-ready-500: #1f9d61;
+  --color-ready-200: #a9dfc0;
+  --color-ready-100: #d4f0df;
+  --color-ready-50: #ebf8f0;
+
+  /* Status: NOT_READY / UNAVAILABLE */
+  --color-blocked-800: #8a1025;
+  --color-blocked-700: #b0172f;
+  --color-blocked-500: #e0435a;
+  --color-blocked-200: #f6b8c2;
+  --color-blocked-100: #fbdbe0;
+  --color-blocked-50: #fdeef1;
+
+  /* Status: NEEDS_VERIFICATION / UNKNOWN */
+  --color-verify-800: #6b3a00;
+  --color-verify-700: #8a4b00;
+  --color-verify-500: #d98a0b;
+  --color-verify-200: #f3d08c;
+  --color-verify-100: #fbe7bf;
+  --color-verify-50: #fff5df;
+
+  /* Status: INCOMPLETE / not listed */
+  --color-incomplete-800: #3c3850;
+  --color-incomplete-700: #4f4a66;
+  --color-incomplete-500: #8a85a0;
+  --color-incomplete-200: #d3d0de;
+  --color-incomplete-100: #e8e6ee;
+  --color-incomplete-50: #f3f2f7;
+
+  --shadow-soft: 0 1px 2px rgb(36 20 61 / 0.05), 0 10px 28px -14px rgb(36 20 61 / 0.18);
+  --shadow-card: 0 1px 2px rgb(36 20 61 / 0.06), 0 16px 36px -18px rgb(36 20 61 / 0.24);
+  --shadow-lift: 0 2px 6px rgb(36 20 61 / 0.07), 0 26px 50px -20px rgb(36 20 61 / 0.32);
+  --shadow-glow: 0 10px 30px -10px rgb(255 138 42 / 0.65);
+
+  --radius-4xl: 2rem;
+
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-bob: bob 4.5s ease-in-out infinite;
+  --animate-twinkle: twinkle 3.6s ease-in-out infinite;
+  --animate-flutter: flutter 0.35s ease-in-out infinite alternate;
+  --animate-drift: drift 26s linear infinite;
+  --animate-fade-up: fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-pop: pop 0.32s var(--ease-spring) both;
+  --animate-blink: blink 6s ease-in-out infinite;
+
+  @keyframes blink {
+    0%,
+    93%,
+    100% {
+      transform: scaleY(1);
+    }
+    96% {
+      transform: scaleY(0.12);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  @keyframes bob {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-4px) rotate(-0.6deg);
+    }
+  }
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0.25;
+      transform: scale(0.85);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes flutter {
+    from {
+      transform: scaleY(1);
+    }
+    to {
+      transform: scaleY(0.55);
+    }
+  }
+  @keyframes drift {
+    0% {
+      transform: translate3d(-12vw, 0, 0);
+    }
+    50% {
+      transform: translate3d(50vw, -18px, 0);
+    }
+    100% {
+      transform: translate3d(112vw, 6px, 0);
+    }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes pop {
+    from {
+      transform: scale(0.6);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
+
+@theme inline {
+  --font-sans: var(--font-atkinson), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, "Times New Roman", serif;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+@layer base {
+  html {
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  /* One consistent, highly visible focus indicator. Dark surfaces switch to orange. */
+  :focus-visible {
+    outline: 3px solid var(--focus-ring, var(--color-plum-600));
+    outline-offset: 3px;
+  }
+
+  .on-dark {
+    --focus-ring: var(--color-pumpkin-400);
+  }
+
+  ::selection {
+    background-color: var(--color-pumpkin-200);
+    color: var(--color-night-900);
+  }
+
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+}
+
+/* ==========================================================================
+   Components and utilities
+   ========================================================================== */
+
+@utility font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 60, "WONK" 0;
+  letter-spacing: -0.02em;
+}
+
+/* Fine noise-free paper texture used on cream sections. */
+@utility bg-paper {
+  background-color: var(--color-cream);
+  background-image:
+    radial-gradient(circle at 12% 8%, rgb(110 74 166 / 0.07), transparent 42%),
+    radial-gradient(circle at 88% 0%, rgb(255 138 42 / 0.07), transparent 38%);
+}
+
+/* The night sky used by the hero and dark bands. */
+@utility bg-night {
+  background-color: var(--color-night-900);
+  background-image:
+    radial-gradient(ellipse 60% 55% at 78% 38%, rgb(132 98 189 / 0.45), transparent 70%),
+    radial-gradient(ellipse 45% 40% at 12% 92%, rgb(255 138 42 / 0.16), transparent 70%),
+    radial-gradient(ellipse 70% 60% at 30% 0%, rgb(61 37 102 / 0.9), transparent 75%),
+    linear-gradient(180deg, var(--color-night-950) 0%, var(--color-night-900) 55%, var(--color-night-800) 100%);
+}
+
+/* Screen-reader-only text that becomes visible on focus (skip link). */
+@utility skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 0.75rem;
+  z-index: 100;
+  transform: translateY(-160%);
+  transition: transform 0.15s ease;
+  &:focus-visible {
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Motion: everything decorative is opt-in for users who haven't asked for less.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Windows High Contrast / forced colors: keep borders and icons visible. */
+@media (forced-colors: active) {
+  .forced-border {
+    border: 1px solid CanvasText;
+  }
+}
+
+/* Print: the checklist page should print cleanly. */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    font-size: 12pt;
+  }
+}
