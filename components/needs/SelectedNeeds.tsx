@@ -24,7 +24,7 @@ export function SelectedNeeds({
         </h2>
         <Link
           href={hrefWithNeeds("/needs", needs)}
-          className="inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 font-bold text-plum-700 underline-offset-4 hover:bg-plum-50 hover:underline"
+          className="inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 font-bold text-wine-700 underline-offset-4 hover:bg-wine-50 hover:underline"
         >
           <Pencil aria-hidden="true" className="size-4" />
           Edit needs
@@ -37,9 +37,9 @@ export function SelectedNeeds({
           return (
             <li
               key={id}
-              className="inline-flex items-center gap-2 rounded-full border border-plum-200 bg-plum-50 py-1.5 pl-2 pr-3.5 text-[0.95rem] font-bold text-plum-800"
+              className="inline-flex items-center gap-2 rounded-full border border-wine-200 bg-wine-50 py-1.5 pl-2 pr-3.5 text-[0.95rem] font-bold text-wine-800"
             >
-              <span className="flex size-6 items-center justify-center rounded-full bg-white text-plum-700">
+              <span className="flex size-6 items-center justify-center rounded-full bg-white text-wine-700">
                 <Icon aria-hidden="true" className="size-3.5" />
               </span>
               {meta.label}

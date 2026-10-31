@@ -21,6 +21,21 @@ npm run dev          # http://localhost:3000
 | `npm run lint`      | ESLint                          |
 | `npm run typecheck` | Generate route types, then run `tsc --noEmit` |
 
+The clinic screens need the backend routes in `app/api/` (built on the `codex-backennd` branch).
+Without them, the frontend shows its error states instead of data.
+
+**For the live demo, run the production build** (`npm run build && npm run start`). It's faster
+and serves its assets to any origin. If you use `npm run dev` through a cloud editor's
+forwarded port and the page looks unstyled, the dev server is blocking that hostname. Add
+it to `allowedDevOrigins` in `next.config.ts`.
+
+### 60-second demo script
+
+1. Open the home page and select **Try demo**. Four mobility needs are preselected.
+2. Select **Continue to clinic comparison** to see every fictional clinic side by side.
+3. Select **Check compatibility for my 4 needs**. Clinics are ranked Ready, Needs verification, then Not ready, with the reason for every need.
+4. Select **Build checklist** on a clinic that needs verification. Copy or download the questions, or open the front-desk card full screen.
+
 ## How it works
 
 1. **Tell us your needs.** Pick accommodations such as an accessible entrance or a transfer lift.
@@ -42,7 +57,6 @@ tests/               Backend tests (backend)
 types/api.ts         Shared TypeScript mirror of the API contract
 API_CONTRACT.md      Shared API contract (source of truth)
 public/              Static assets, including the Boo mascot
-dev-mock/            TEMPORARY dev-only mock API. Delete before the demo.
 ```
 
 ## API

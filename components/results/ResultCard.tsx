@@ -129,7 +129,7 @@ export function ResultCard({
               const Icon = isRequirementId(check.requirement) ? REQUIREMENTS[check.requirement].icon : null;
               return (
                 <li key={check.requirement} className="flex gap-3 py-3.5">
-                  <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-xl bg-plum-100 text-plum-700">
+                  <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-xl bg-wine-100 text-wine-700">
                     {Icon ? <Icon aria-hidden="true" className="size-[1.1rem]" /> : null}
                   </span>
                   <div className="min-w-0 flex-1">
@@ -147,12 +147,12 @@ export function ResultCard({
           </ul>
         </div>
 
-        <div className="rounded-2xl border border-plum-200 bg-plum-50 p-4">
+        <div className="rounded-2xl border border-wine-200 bg-wine-50 p-4">
           <h4 className="flex items-center gap-2 font-bold text-night-900">
-            <Footprints aria-hidden="true" className="size-5 text-plum-700" />
+            <Footprints aria-hidden="true" className="size-5 text-wine-700" />
             Next steps
           </h4>
-          <ol className="mt-2 list-decimal space-y-1.5 pl-6 text-ink-soft marker:font-bold marker:text-plum-700">
+          <ol className="mt-2 list-decimal space-y-1.5 pl-6 text-ink-soft marker:font-bold marker:text-wine-700">
             {steps.map((step) => (
               <li key={step}>{step}</li>
             ))}
@@ -161,13 +161,13 @@ export function ResultCard({
       </div>
 
       <footer className="no-print flex flex-col gap-3 border-t border-line bg-cream-100/60 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
-        <ButtonLink href={checklistHref} variant="purple" icon={<ClipboardList />}>
+        <ButtonLink href={checklistHref} icon={<ClipboardList />}>
           Build checklist
           <span className="sr-only"> for {result.clinicName}</span>
         </ButtonLink>
         <Link
           href={hrefWithNeeds(`/clinics/${encodeURIComponent(result.clinicId)}`, needs)}
-          className="inline-flex min-h-11 items-center gap-1.5 rounded-full px-2 font-bold text-plum-700 underline-offset-4 hover:underline"
+          className="inline-flex min-h-11 items-center gap-1.5 rounded-full px-2 font-bold text-wine-700 underline-offset-4 hover:underline"
         >
           Clinic details
           <span className="sr-only"> for {result.clinicName}</span>

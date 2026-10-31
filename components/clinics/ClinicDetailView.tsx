@@ -104,13 +104,13 @@ export function ClinicDetailView({ clinicId, needs }: { clinicId: string; needs:
                       const isNeed = needs.includes(id);
                       return (
                         <li key={id} className="flex items-center gap-3 py-3">
-                          <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-plum-100 text-plum-700">
+                          <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-wine-100 text-wine-700">
                             <Icon aria-hidden="true" className="size-[1.1rem]" />
                           </span>
                           <span className="flex flex-col">
                             <span className="font-bold text-night-900">{REQUIREMENTS[id].label}</span>
                             {isNeed ? (
-                              <span className="inline-flex items-center gap-1 text-sm font-bold text-plum-700">
+                              <span className="inline-flex items-center gap-1 text-sm font-bold text-wine-700">
                                 <Star aria-hidden="true" className="size-3.5 fill-current" />
                                 Your need
                               </span>
@@ -129,7 +129,7 @@ export function ClinicDetailView({ clinicId, needs }: { clinicId: string; needs:
         {needs.length > 0 ? (
           <ClinicMatchPanel clinicId={clinic.id} clinicName={clinic.name} needs={needs} />
         ) : (
-          <section aria-labelledby="match-cta-title" className="rounded-[1.75rem] border border-plum-200 bg-plum-50 p-6 sm:p-8">
+          <section aria-labelledby="match-cta-title" className="rounded-[1.75rem] border border-wine-200 bg-wine-50 p-6 sm:p-8">
             <h2 id="match-cta-title" className="font-display text-2xl font-semibold text-night-900">
               Is this clinic ready for you?
             </h2>
@@ -210,7 +210,6 @@ function ClinicMatchPanel({
                 </ul>
                 <ButtonLink
                   href={hrefWithNeeds("/checklist", needs, { clinic: clinicId })}
-                  variant="purple"
                   icon={<ClipboardList />}
                   className="self-start"
                 >

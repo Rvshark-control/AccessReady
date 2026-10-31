@@ -38,8 +38,8 @@ export function FlowStepper({
             <span
               className={cn(
                 "flex size-8 shrink-0 items-center justify-center rounded-full border-2 text-sm font-bold transition-colors",
-                isCurrent && "border-pumpkin-500 bg-pumpkin-500 text-night-900",
-                isDone && "border-plum-600 bg-plum-600 text-white",
+                isCurrent && "border-wine-600 bg-wine-600 text-white shadow-glow",
+                isDone && "border-wine-200 bg-wine-50 text-wine-700",
                 !isCurrent && !isDone && "border-line-strong bg-white text-ink-muted",
               )}
               aria-hidden="true"
@@ -66,7 +66,7 @@ export function FlowStepper({
               {reachable && !isCurrent ? (
                 <Link
                   href={href}
-                  className="group flex items-center gap-2 rounded-full py-1 pl-1 pr-2 transition-colors hover:bg-plum-100"
+                  className="group flex items-center gap-2 rounded-full py-1 pl-1 pr-2 transition-colors hover:bg-wine-100"
                 >
                   {marker}
                   {label}
@@ -87,7 +87,7 @@ export function FlowStepper({
                   aria-hidden="true"
                   className={cn(
                     "h-0.5 w-4 rounded-full sm:w-8",
-                    index < currentIndex ? "bg-plum-600" : "bg-line-strong",
+                    index < currentIndex ? "bg-wine-600" : "bg-line-strong",
                   )}
                 />
               ) : null}
@@ -103,5 +103,5 @@ export function FlowStepper({
 }
 
 export function FlowStepperSkeleton() {
-  return <div aria-hidden="true" className="h-10 w-full max-w-md animate-pulse rounded-full bg-plum-100/70" />;
+  return <div aria-hidden="true" className="h-10 w-full max-w-md animate-pulse rounded-full bg-wine-100/70" />;
 }

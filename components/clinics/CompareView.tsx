@@ -63,12 +63,12 @@ export function CompareView({ needs }: { needs: RequirementId[] }) {
       <FictionalDataNotice />
 
       {needs.length === 0 ? (
-        <div className="flex flex-col gap-4 rounded-3xl border border-plum-200 bg-plum-50 p-5 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-4 rounded-3xl border border-wine-200 bg-wine-50 p-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-ink-soft">
             <strong className="text-night-900">You&apos;re viewing every accommodation.</strong> Choose your needs to
             highlight what matters to you and get a compatibility verdict for each clinic.
           </p>
-          <ButtonLink href="/needs" variant="purple" trailingIcon={<ArrowRight />} className="shrink-0">
+          <ButtonLink href="/needs" variant="dark" trailingIcon={<ArrowRight />} className="shrink-0">
             Choose my needs
           </ButtonLink>
         </div>
@@ -100,7 +100,7 @@ export function CompareView({ needs }: { needs: RequirementId[] }) {
                       <FictionalTag />
                       <Link
                         href={hrefWithNeeds(`/clinics/${encodeURIComponent(clinic.id)}`, needs)}
-                        className="group inline-flex items-start gap-1 rounded text-[1.05rem] font-bold leading-snug text-night-900 underline-offset-4 hover:text-plum-700 hover:underline"
+                        className="group inline-flex items-start gap-1 rounded text-[1.05rem] font-bold leading-snug text-night-900 underline-offset-4 hover:text-wine-700 hover:underline"
                       >
                         {clinic.name}
                         <ChevronRight aria-hidden="true" className="mt-0.5 size-4 shrink-0 transition-transform motion-safe:group-hover:translate-x-0.5" />
@@ -130,16 +130,16 @@ export function CompareView({ needs }: { needs: RequirementId[] }) {
                       </th>
                     </tr>
                   ) : null}
-                  <tr className={cn(isNeed && "bg-plum-50/70")}>
-                    <th scope="row" className={cn("border-b border-line px-5 py-4 align-middle", isNeed && "border-l-4 border-l-plum-600")}>
+                  <tr className={cn(isNeed && "bg-wine-50/70")}>
+                    <th scope="row" className={cn("border-b border-line px-5 py-4 align-middle", isNeed && "border-l-4 border-l-wine-600")}>
                       <span className="flex items-center gap-3">
-                        <span className={cn("flex size-10 shrink-0 items-center justify-center rounded-xl", isNeed ? "bg-plum-600 text-white" : "bg-plum-100 text-plum-700")}>
+                        <span className={cn("flex size-10 shrink-0 items-center justify-center rounded-xl", isNeed ? "bg-wine-600 text-white" : "bg-wine-100 text-wine-700")}>
                           <Icon aria-hidden="true" className="size-5" />
                         </span>
                         <span className="flex flex-col">
                           <span className="font-bold text-night-900">{meta.label}</span>
                           {isNeed ? (
-                            <span className="inline-flex items-center gap-1 text-sm font-bold text-plum-700">
+                            <span className="inline-flex items-center gap-1 text-sm font-bold text-wine-700">
                               <Star aria-hidden="true" className="size-3.5 fill-current" />
                               Your need
                             </span>
@@ -253,7 +253,7 @@ function ClinicCard({
                   {REQUIREMENTS[id].shortLabel}
                 </span>
                 {isNeed ? (
-                  <span className="inline-flex items-center gap-1 text-sm font-bold text-plum-700">
+                  <span className="inline-flex items-center gap-1 text-sm font-bold text-wine-700">
                     <Star aria-hidden="true" className="size-3.5 fill-current" />
                     Your need
                   </span>
@@ -267,7 +267,7 @@ function ClinicCard({
 
       <Link
         href={hrefWithNeeds(`/clinics/${encodeURIComponent(clinic.id)}`, needs)}
-        className="mt-auto inline-flex min-h-11 items-center gap-1.5 self-start rounded-full pt-5 font-bold text-plum-700 underline-offset-4 hover:underline"
+        className="mt-auto inline-flex min-h-11 items-center gap-1.5 self-start rounded-full pt-5 font-bold text-wine-700 underline-offset-4 hover:underline"
       >
         View clinic details
         <span className="sr-only">for {clinic.name}</span>

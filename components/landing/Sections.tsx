@@ -53,7 +53,7 @@ export function HowItWorks() {
         <ol className="relative mt-14 grid gap-6 md:grid-cols-3">
           <span
             aria-hidden="true"
-            className="absolute left-[16%] right-[16%] top-11 hidden border-t-2 border-dashed border-plum-200 md:block"
+            className="absolute left-[16%] right-[16%] top-11 hidden border-t-2 border-dashed border-wine-200 md:block"
           />
           {STEPS.map((step, index) => {
             const Icon = step.icon;
@@ -63,7 +63,7 @@ export function HowItWorks() {
                 className="group relative rounded-3xl border border-line bg-white p-7 shadow-card transition-[transform,box-shadow] duration-300 motion-safe:hover:-translate-y-1 hover:shadow-lift"
               >
                 <div className="flex items-center gap-4">
-                  <span className="relative flex size-16 items-center justify-center rounded-2xl bg-night-900 text-pumpkin-400 shadow-soft">
+                  <span className="relative flex size-16 items-center justify-center rounded-2xl bg-wine-600 text-white shadow-glow">
                     <Icon aria-hidden="true" className="size-7" strokeWidth={2.1} />
                     <span className="absolute -right-2 -top-2 flex size-7 items-center justify-center rounded-full border-2 border-white bg-pumpkin-500 text-sm font-bold text-night-900">
                       {index + 1}
@@ -97,8 +97,8 @@ export function StatusExplainer() {
             title="Four honest verdicts. Never just a color."
             description="Every clinic gets one of four statuses for your needs. Each has its own icon, words, and color, so the meaning never depends on seeing color."
           />
-          <div className="mt-8 flex gap-3 rounded-2xl border border-plum-200 bg-plum-50 p-5 text-ink-soft">
-            <ShieldAlert aria-hidden="true" className="mt-0.5 size-6 shrink-0 text-plum-700" />
+          <div className="mt-8 flex gap-3 rounded-2xl border border-wine-200 bg-wine-50 p-5 text-ink-soft">
+            <ShieldAlert aria-hidden="true" className="mt-0.5 size-6 shrink-0 text-wine-700" />
             <p>
               <strong className="text-night-900">“Ready” means confirmed in our demonstration data.</strong>{" "}
               It is not a guarantee of real-world accessibility. Always confirm with the clinic before your
@@ -150,7 +150,7 @@ export function AccessibilityPromise() {
         <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {PROMISES.map(({ icon: Icon, title, body }) => (
             <li key={title} className="flex gap-4 rounded-3xl border border-line bg-white/80 p-6 shadow-soft">
-              <span className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-plum-100 text-plum-700">
+              <span className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-wine-100 text-wine-700">
                 <Icon aria-hidden="true" className="size-6" />
               </span>
               <div>
@@ -169,18 +169,18 @@ export function FinalCta() {
   return (
     <section aria-labelledby="cta-title" className="bg-paper pb-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="on-dark relative isolate overflow-hidden rounded-[2.25rem] bg-night px-6 py-12 text-cream shadow-lift sm:px-12 lg:flex lg:items-center lg:justify-between lg:gap-10 lg:py-14">
+        <div className="on-dark relative isolate overflow-hidden rounded-[2.25rem] bg-accent-band px-6 py-12 text-cream shadow-lift sm:px-12 lg:flex lg:items-center lg:justify-between lg:gap-10 lg:py-14">
           <Sparkle className="absolute right-[38%] top-8 -z-10 size-5 text-pumpkin-300/70 motion-safe:animate-twinkle" />
-          <Sparkle className="absolute bottom-10 left-[46%] -z-10 size-3 text-plum-300/70 motion-safe:animate-twinkle [animation-delay:1.2s]" />
+          <Sparkle className="absolute bottom-10 left-[46%] -z-10 size-3 text-wine-300/70 motion-safe:animate-twinkle [animation-delay:1.2s]" />
           <div className="max-w-xl">
             <h2 id="cta-title" className="font-display text-4xl font-semibold leading-tight sm:text-5xl">
               No more surprises at the front desk.
             </h2>
-            <p className="mt-4 text-lg text-plum-200">
+            <p className="mt-4 text-lg text-wine-200">
               Check your next visit in about a minute, or load the demo profile and compare fictional clinics side by side.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="/needs" size="lg" trailingIcon={<ArrowRight />}>
+              <ButtonLink href="/needs" size="lg" variant="light" trailingIcon={<ArrowRight />}>
                 Check my accessibility needs
               </ButtonLink>
               <ButtonLink href="/needs?demo=1" size="lg" variant="dark-outline" icon={<Play className="fill-current" />}>

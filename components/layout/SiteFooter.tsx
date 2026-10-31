@@ -5,7 +5,7 @@ import { BatFlock } from "@/components/brand/Decorations";
 
 export function SiteFooter() {
   return (
-    <footer className="on-dark relative mt-auto overflow-hidden bg-night-900 text-plum-200">
+    <footer className="on-dark relative mt-auto overflow-hidden bg-night-900 text-wine-200">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.2fr_1fr_1fr] lg:px-8">
         <div className="max-w-sm">
           <Link href="/" className="inline-block rounded-xl" aria-label="AccessReady home">
@@ -56,7 +56,7 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-5 sm:px-6 lg:px-8">
-          <p className="text-sm text-plum-300">
+          <p className="text-sm text-wine-300">
             Not medical advice. Built with care for disabled patients, their families, and caregivers.
           </p>
           <BatFlock className="pointer-events-none hidden w-24 shrink-0 opacity-40 sm:block" />

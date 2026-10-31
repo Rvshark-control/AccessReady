@@ -83,8 +83,8 @@ function ClinicPicker({
               key={r.clinicId}
               className={cn(
                 "relative flex cursor-pointer flex-col gap-2 rounded-2xl border-2 bg-white p-4 shadow-soft transition-colors",
-                "hover:border-plum-400 has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-offset-3 has-[:focus-visible]:outline-plum-600 has-[:focus-visible]:outline-solid",
-                checked ? "border-plum-600 bg-plum-50" : "border-line",
+                "hover:border-wine-400 has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-offset-3 has-[:focus-visible]:outline-wine-600 has-[:focus-visible]:outline-solid",
+                checked ? "border-wine-600 bg-wine-50" : "border-line",
               )}
             >
               <input
@@ -101,10 +101,10 @@ function ClinicPicker({
                   aria-hidden="true"
                   className={cn(
                     "mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full border-2 forced-colors:border-[CanvasText]",
-                    checked ? "border-plum-600" : "border-plum-500",
+                    checked ? "border-wine-600" : "border-wine-500",
                   )}
                 >
-                  <span className={cn("size-2.5 rounded-full", checked ? "bg-plum-600" : "bg-transparent")} />
+                  <span className={cn("size-2.5 rounded-full", checked ? "bg-wine-600" : "bg-transparent")} />
                 </span>
               </span>
               <span className="flex flex-wrap items-center gap-2">
@@ -167,10 +167,10 @@ function ChecklistDocument({ result, needs }: { result: ClinicMatchResult; needs
         aria-labelledby="checklist-title"
         className="overflow-hidden rounded-[1.75rem] border border-line bg-white shadow-lift print:border-0 print:shadow-none"
       >
-        <header className="on-dark bg-night px-6 py-7 text-cream sm:px-8 print:bg-white print:text-black">
+        <header className="on-dark bg-accent-band px-6 py-7 text-cream sm:px-8 print:bg-white print:text-black">
           <div className="flex items-center gap-3">
             <LogoMark className="size-9" />
-            <p className="text-sm font-bold uppercase tracking-[0.16em] text-pumpkin-400 print:text-black">
+            <p className="text-sm font-bold uppercase tracking-[0.16em] text-pumpkin-300 print:text-black">
               Accommodation checklist
             </p>
           </div>
@@ -179,7 +179,7 @@ function ChecklistDocument({ result, needs }: { result: ClinicMatchResult; needs
           </h2>
           <div className="mt-4 flex flex-wrap items-center gap-3">
             <MatchStatusBadge status={result.status} />
-            <span className="text-plum-200 print:text-black">
+            <span className="text-wine-200 print:text-black">
               {result.confirmedCount} confirmed · {result.unavailableCount} unavailable · {result.unknownCount} unknown
             </span>
           </div>
@@ -194,7 +194,7 @@ function ChecklistDocument({ result, needs }: { result: ClinicMatchResult; needs
               {needs.map((id) => {
                 const Icon = REQUIREMENTS[id].icon;
                 return (
-                  <li key={id} className="inline-flex items-center gap-2 rounded-full border border-plum-200 bg-plum-50 px-3 py-1.5 text-[0.95rem] font-bold text-plum-800">
+                  <li key={id} className="inline-flex items-center gap-2 rounded-full border border-wine-200 bg-wine-50 px-3 py-1.5 text-[0.95rem] font-bold text-wine-800">
                     <Icon aria-hidden="true" className="size-4" />
                     {REQUIREMENTS[id].label}
                   </li>
@@ -205,7 +205,7 @@ function ChecklistDocument({ result, needs }: { result: ClinicMatchResult; needs
 
           <section aria-labelledby="checklist-questions">
             <h3 id="checklist-questions" className="flex items-center gap-2 text-xl font-bold text-night-900">
-              <MessageCircleQuestionMark aria-hidden="true" className="size-6 text-plum-700" />
+              <MessageCircleQuestionMark aria-hidden="true" className="size-6 text-wine-700" />
               Questions to ask the clinic
             </h3>
             {questions.length > 0 ? (
@@ -214,7 +214,7 @@ function ChecklistDocument({ result, needs }: { result: ClinicMatchResult; needs
                   <li key={`${i}-${question}`} className="flex gap-4 rounded-2xl border border-line bg-cream/60 p-4">
                     <span
                       aria-hidden="true"
-                      className="flex size-8 shrink-0 items-center justify-center rounded-full bg-pumpkin-500 font-bold text-night-900"
+                      className="flex size-8 shrink-0 items-center justify-center rounded-full bg-wine-600 font-bold text-white"
                     >
                       {i + 1}
                     </span>
@@ -270,7 +270,7 @@ function ChecklistDocument({ result, needs }: { result: ClinicMatchResult; needs
             <Button variant="primary" icon={<Copy />} onClick={copyQuestions} className="w-full">
               Copy questions &amp; requests
             </Button>
-            <Button variant="purple" icon={<Download />} onClick={download} className="w-full">
+            <Button variant="dark" icon={<Download />} onClick={download} className="w-full">
               Download as text file
             </Button>
             <Button variant="secondary" icon={<Printer />} onClick={() => window.print()} className="w-full">
@@ -291,24 +291,24 @@ function ChecklistDocument({ result, needs }: { result: ClinicMatchResult; needs
                 readOnly
                 value={manualText}
                 rows={6}
-                className="mt-1.5 w-full rounded-xl border-2 border-plum-300 bg-cream p-3 font-mono text-sm text-night-900"
+                className="mt-1.5 w-full rounded-xl border-2 border-wine-300 bg-cream p-3 font-mono text-sm text-night-900"
               />
             </div>
           ) : null}
         </div>
 
-        <div className="rounded-[1.75rem] border border-plum-200 bg-plum-50 p-6">
+        <div className="rounded-[1.75rem] border border-wine-200 bg-wine-50 p-6">
           <h2 className="flex items-center gap-2 text-lg font-bold text-night-900">
-            <PhoneCall aria-hidden="true" className="size-5 text-plum-700" />
+            <PhoneCall aria-hidden="true" className="size-5 text-wine-700" />
             How to use this checklist
           </h2>
-          <ol className="mt-3 list-decimal space-y-2 pl-5 text-ink-soft marker:font-bold marker:text-plum-700">
+          <ol className="mt-3 list-decimal space-y-2 pl-5 text-ink-soft marker:font-bold marker:text-wine-700">
             <li>Call, email, or message the clinic&apos;s front desk or accessibility coordinator.</li>
             <li>Ask each question and write down who answered and what they said.</li>
             <li>Ask them to add your accommodations to your patient record.</li>
           </ol>
           <p className="mt-4 flex items-start gap-2 rounded-2xl bg-white/80 p-3 text-sm font-bold text-night-900">
-            <Send aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-plum-700" />
+            <Send aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-wine-700" />
             Nothing has been sent. AccessReady never contacts clinics for you.
           </p>
         </div>

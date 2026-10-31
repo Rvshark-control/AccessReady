@@ -75,7 +75,7 @@ export function DifferencesTable({
                 <tr key={row.id} className={cn(row.differs && "bg-pumpkin-50/70")}>
                   <th scope="row" className={cn("border-b border-line px-5 py-4", row.differs && "border-l-4 border-l-pumpkin-500")}>
                     <span className="flex items-center gap-3">
-                      <Icon aria-hidden="true" className="size-5 shrink-0 text-plum-700" />
+                      <Icon aria-hidden="true" className="size-5 shrink-0 text-wine-700" />
                       <span className="flex flex-col">
                         <span className="font-bold text-night-900">{REQUIREMENTS[row.id].label}</span>
                         <DiffTag differs={row.differs} />
@@ -107,7 +107,7 @@ export function DifferencesTable({
               )}
             >
               <p className="flex items-center gap-2.5 font-bold text-night-900">
-                <Icon aria-hidden="true" className="size-5 shrink-0 text-plum-700" />
+                <Icon aria-hidden="true" className="size-5 shrink-0 text-wine-700" />
                 {REQUIREMENTS[row.id].label}
               </p>
               <DiffTag differs={row.differs} className="mt-1" />

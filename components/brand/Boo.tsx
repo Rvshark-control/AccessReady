@@ -32,6 +32,8 @@ export function Boo({
   return (
     <svg
       viewBox="0 0 360 380"
+      width={360}
+      height={380}
       xmlns="http://www.w3.org/2000/svg"
       className={cn("h-auto w-full select-none", className)}
       {...a11y}

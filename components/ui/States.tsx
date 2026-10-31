@@ -22,17 +22,17 @@ export function LoadingState({
       <div className="flex items-center gap-3 text-ink-soft">
         <span
           aria-hidden="true"
-          className="size-5 rounded-full border-[3px] border-plum-200 border-t-plum-600 motion-safe:animate-spin"
+          className="size-5 rounded-full border-[3px] border-wine-200 border-t-wine-600 motion-safe:animate-spin"
         />
         <span className="font-bold">{label}</span>
       </div>
       <div aria-hidden="true" className="mt-6 space-y-3">
         {Array.from({ length: rows }, (_, i) => (
           <div key={i} className="flex items-center gap-4">
-            <div className="size-11 shrink-0 rounded-2xl bg-plum-100 motion-safe:animate-pulse" />
+            <div className="size-11 shrink-0 rounded-2xl bg-wine-100 motion-safe:animate-pulse" />
             <div className="flex-1 space-y-2">
-              <div className="h-3.5 w-2/5 rounded-full bg-plum-100 motion-safe:animate-pulse" />
-              <div className="h-3 w-4/5 rounded-full bg-plum-50 motion-safe:animate-pulse" />
+              <div className="h-3.5 w-2/5 rounded-full bg-wine-100 motion-safe:animate-pulse" />
+              <div className="h-3 w-4/5 rounded-full bg-wine-50 motion-safe:animate-pulse" />
             </div>
           </div>
         ))}
@@ -76,7 +76,7 @@ export function ErrorState({
           <h2 className="text-xl font-bold text-night-900">{title}</h2>
           <p className="mt-1.5 text-ink-soft">{error.message}</p>
           {onRetry ? (
-            <Button className="mt-5" variant="purple" icon={<RotateCcw />} onClick={onRetry}>
+            <Button className="mt-5" variant="dark" icon={<RotateCcw />} onClick={onRetry}>
               Try again
             </Button>
           ) : null}

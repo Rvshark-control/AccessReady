@@ -30,7 +30,6 @@ Only edit files you own. Each agent must leave the other agent's files untouched
 | `components/**` | Claude (frontend) | React components |
 | `utils/**` | Claude (frontend) | Frontend-only helpers (API client, display metadata) |
 | `public/**` | Claude (frontend) | Static assets, including the Boo mascot |
-| `dev-mock/**` | Claude (frontend) | Temporary dev-only mock API. Deleted before the demo. |
 | `API_CONTRACT.md`, `types/api.ts` | Shared | Change only with agreement from both sides |
 | `package.json`, `package-lock.json`, `next.config.ts`, `tsconfig.json`, `eslint.config.mjs`, `AGENTS.md`, `README.md` | Shared | Additive edits only. Never rewrite, reorder, or remove the other side's entries. |
 

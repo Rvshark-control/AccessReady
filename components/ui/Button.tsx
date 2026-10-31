@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 import { cn } from "@/utils/cn";
 
-export type ButtonVariant = "primary" | "secondary" | "purple" | "ghost" | "dark-outline";
+export type ButtonVariant = "primary" | "secondary" | "dark" | "light" | "ghost" | "dark-outline";
 export type ButtonSize = "md" | "lg";
 
 const base =
@@ -15,11 +15,12 @@ const base =
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-pumpkin-500 text-night-900 shadow-glow hover:bg-pumpkin-400 hover:shadow-[0_14px_34px_-10px_rgb(255_138_42/0.75)]",
+    "bg-wine-600 text-white shadow-glow hover:bg-wine-700 hover:shadow-[0_16px_34px_-12px_rgb(146_43_69/0.7)]",
   secondary:
-    "bg-white text-night-900 border-2 border-plum-200 shadow-soft hover:border-plum-500 hover:bg-plum-50",
-  purple: "bg-plum-600 text-white shadow-soft hover:bg-plum-700",
-  ghost: "text-plum-700 hover:bg-plum-100 hover:text-night-900",
+    "bg-white/90 text-night-900 border-2 border-line-strong shadow-soft backdrop-blur hover:border-wine-500 hover:bg-wine-50",
+  dark: "bg-night-900 text-white shadow-soft hover:bg-night-700",
+  light: "bg-white text-wine-800 shadow-soft hover:bg-wine-50",
+  ghost: "text-wine-700 hover:bg-wine-100 hover:text-night-900",
   "dark-outline":
     "border-2 border-white/35 bg-white/8 text-cream backdrop-blur hover:border-white/70 hover:bg-white/14",
 };

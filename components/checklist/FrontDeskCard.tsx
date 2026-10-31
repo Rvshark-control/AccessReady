@@ -52,7 +52,7 @@ export function FrontDeskCard({ clinicName, needs }: { clinicName: string; needs
       <div className="no-print flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h2 id="front-desk-title" className="font-display flex items-center gap-2.5 text-3xl font-semibold text-night-900">
-            <IdCard aria-hidden="true" className="size-7 text-plum-700" />
+            <IdCard aria-hidden="true" className="size-7 text-wine-700" />
             Front-desk card
           </h2>
           <p className="mt-1.5 max-w-2xl text-ink-soft">
@@ -69,11 +69,11 @@ export function FrontDeskCard({ clinicName, needs }: { clinicName: string; needs
         tabIndex={-1}
         aria-label={`Front-desk card for ${clinicName}`}
         role="group"
-        className="front-desk-card relative overflow-hidden rounded-[1.75rem] border-2 border-plum-300 bg-white p-6 shadow-card outline-none sm:p-8 print:shadow-none"
+        className="front-desk-card relative overflow-hidden rounded-[1.75rem] border-2 border-wine-300 bg-white p-6 shadow-card outline-none sm:p-8 print:shadow-none"
       >
-        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-2 bg-[linear-gradient(90deg,var(--color-plum-600),var(--color-pumpkin-500))]" />
+        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-2 bg-[linear-gradient(90deg,var(--color-wine-600),var(--color-pumpkin-500))]" />
         <Button
-          variant="purple"
+          variant="dark"
           icon={<Minimize />}
           onClick={exitFullScreen}
           className="front-desk-exit"
@@ -83,7 +83,7 @@ export function FrontDeskCard({ clinicName, needs }: { clinicName: string; needs
         <div className="flex items-center gap-3">
           <LogoMark className="size-10" />
           <div>
-            <p className="text-sm font-bold uppercase tracking-[0.16em] text-pumpkin-700">Accessibility requests</p>
+            <p className="text-sm font-bold uppercase tracking-[0.16em] text-wine-700">Accessibility requests</p>
             <p className="font-bold text-night-900">{clinicName}</p>
           </div>
         </div>
@@ -94,8 +94,8 @@ export function FrontDeskCard({ clinicName, needs }: { clinicName: string; needs
           {needs.map((id) => {
             const Icon = REQUIREMENTS[id].icon;
             return (
-              <li key={id} className="flex gap-3.5 rounded-2xl bg-plum-50 p-4">
-                <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-plum-600 text-white">
+              <li key={id} className="flex gap-3.5 rounded-2xl bg-wine-50 p-4">
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-wine-600 text-white">
                   <Icon aria-hidden="true" className="size-5" />
                 </span>
                 <span>
@@ -113,7 +113,7 @@ export function FrontDeskCard({ clinicName, needs }: { clinicName: string; needs
         <p className="mt-4 text-sm text-ink-muted">Prepared with the AccessReady prototype · fictional clinic data</p>
       </div>
 
-      <p role="status" className="no-print min-h-6 text-[0.95rem] font-bold text-plum-800">
+      <p role="status" className="no-print min-h-6 text-[0.95rem] font-bold text-wine-800">
         {note}
       </p>
     </section>

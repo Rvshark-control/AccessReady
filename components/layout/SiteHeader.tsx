@@ -17,11 +17,11 @@ type Variant = "desktop" | "mobile";
 
 const LINK_CLASSES: Record<Variant, string> = {
   desktop: cn(
-    "rounded-full px-4 py-2 text-[0.975rem] font-bold text-ink-soft transition-colors hover:bg-plum-100 hover:text-night-900",
-    "aria-[current=page]:bg-plum-100 aria-[current=page]:text-night-900",
+    "rounded-full px-4 py-2 text-[0.975rem] font-bold text-ink-soft transition-colors hover:bg-wine-100 hover:text-night-900",
+    "aria-[current=page]:bg-wine-100 aria-[current=page]:text-night-900",
   ),
   mobile:
-    "flex min-h-12 items-center rounded-2xl px-4 text-lg font-bold text-night-900 hover:bg-plum-100 aria-[current=page]:bg-plum-100",
+    "flex min-h-12 items-center rounded-2xl px-4 text-lg font-bold text-night-900 hover:bg-wine-100 aria-[current=page]:bg-wine-100",
 };
 
 /** Renders the nav links; `pathname` is null while the URL isn't known yet (static shell). */
@@ -101,7 +101,7 @@ export function SiteHeader() {
           </span>
           <Link
             href="/needs?demo=1"
-            className="hidden min-h-11 items-center gap-2 rounded-full bg-night-900 px-5 text-[0.975rem] font-bold text-cream shadow-soft transition-colors hover:bg-plum-700 sm:inline-flex"
+            className="hidden min-h-11 items-center gap-2 rounded-full bg-night-900 px-5 text-[0.975rem] font-bold text-cream shadow-soft transition-colors hover:bg-wine-700 sm:inline-flex"
           >
             <Sparkles aria-hidden="true" className="size-4 text-pumpkin-400" />
             Try demo
@@ -109,7 +109,7 @@ export function SiteHeader() {
           <button
             ref={toggleRef}
             type="button"
-            className="inline-flex size-11 items-center justify-center rounded-full border-2 border-plum-200 bg-white text-night-900 md:hidden"
+            className="inline-flex size-11 items-center justify-center rounded-full border-2 border-wine-200 bg-white text-night-900 md:hidden"
             aria-expanded={open}
             aria-controls={menuId}
             onClick={() => setOpen((value) => !value)}

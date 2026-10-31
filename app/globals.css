@@ -2,28 +2,31 @@
 
 /* ==========================================================================
    AccessReady design tokens
-   Brand: deep purple #24143D · purple #6E4AA6 · orange #FF8A2A · cream #FFF8F0
-   Contrast notes (WCAG 2.2):
-   - Orange #FF8A2A is a fill color only. Text on it uses night-900 (7.2:1).
-   - pumpkin-700 is the text-safe orange on light surfaces.
-   - Status colors always come with an icon and a text label.
+   Canvas: crisp white + cream · Accent: refined burgundy (wine-*) ·
+   Text: warm dark neutrals (night-*, ink-*) · Halloween touches: pumpkin-*
+   Contrast notes (WCAG 2.2, verified):
+   - White on wine-600 is 7.9:1 (primary buttons). wine-600 on white is 7.9:1.
+   - ink-muted is the lightest body-text color; it stays above 6.3:1 on every canvas.
+   - "Unavailable" uses a vermilion red (blocked-*), deliberately distinct from the
+     burgundy accent, and every status always carries an icon and a text label.
    ========================================================================== */
 
 @theme {
-  --color-night-950: #170d29;
-  --color-night-900: #24143d;
-  --color-night-800: #2f1b4f;
-  --color-night-700: #3d2566;
+  --color-night-950: #141011;
+  --color-night-900: #1f1a1c;
+  --color-night-800: #2d2629;
+  --color-night-700: #403639;
 
-  --color-plum-800: #4a3173;
-  --color-plum-700: #5a3c8c;
-  --color-plum-600: #6e4aa6;
-  --color-plum-500: #8462bd;
-  --color-plum-400: #a387d3;
-  --color-plum-300: #c3b0e6;
-  --color-plum-200: #ddd1f2;
-  --color-plum-100: #eee7fa;
-  --color-plum-50: #f7f3fd;
+  --color-wine-900: #3d0f1c;
+  --color-wine-800: #5c1729;
+  --color-wine-700: #7a2036;
+  --color-wine-600: #922b45;
+  --color-wine-500: #ad4561;
+  --color-wine-400: #c56d84;
+  --color-wine-300: #dc9fae;
+  --color-wine-200: #edcad3;
+  --color-wine-100: #f7e5ea;
+  --color-wine-50: #fcf3f5;
 
   --color-pumpkin-800: #8a3c08;
   --color-pumpkin-700: #a3470a;
@@ -36,14 +39,14 @@
   --color-pumpkin-50: #fff5ec;
 
   --color-cream: #fff8f0;
-  --color-cream-100: #fbf1e6;
-  --color-cream-200: #f4e6d6;
+  --color-cream-100: #fbf3ea;
+  --color-cream-200: #f3e7da;
 
-  --color-ink: #24143d;
-  --color-ink-soft: #4b3d63;
-  --color-ink-muted: #5f5275;
-  --color-line: #e8deea;
-  --color-line-strong: #cfc2db;
+  --color-ink: #1f1a1c;
+  --color-ink-soft: #4a4043;
+  --color-ink-muted: #625659;
+  --color-line: #ece1e2;
+  --color-line-strong: #d7c8ca;
 
   /* Status: READY / CONFIRMED */
   --color-ready-800: #075232;
@@ -54,13 +57,13 @@
   --color-ready-100: #d4f0df;
   --color-ready-50: #ebf8f0;
 
-  /* Status: NOT_READY / UNAVAILABLE */
-  --color-blocked-800: #8a1025;
-  --color-blocked-700: #b0172f;
-  --color-blocked-500: #e0435a;
-  --color-blocked-200: #f6b8c2;
-  --color-blocked-100: #fbdbe0;
-  --color-blocked-50: #fdeef1;
+  /* Status: NOT_READY / UNAVAILABLE (vermilion, distinct from the burgundy accent) */
+  --color-blocked-800: #8f1d13;
+  --color-blocked-700: #b42318;
+  --color-blocked-500: #e5484d;
+  --color-blocked-200: #f9bdb6;
+  --color-blocked-100: #fde1dd;
+  --color-blocked-50: #fef1ef;
 
   /* Status: NEEDS_VERIFICATION / UNKNOWN */
   --color-verify-800: #6b3a00;
@@ -71,17 +74,17 @@
   --color-verify-50: #fff5df;
 
   /* Status: INCOMPLETE / not listed */
-  --color-incomplete-800: #3c3850;
-  --color-incomplete-700: #4f4a66;
-  --color-incomplete-500: #8a85a0;
-  --color-incomplete-200: #d3d0de;
-  --color-incomplete-100: #e8e6ee;
-  --color-incomplete-50: #f3f2f7;
+  --color-incomplete-800: #3f393b;
+  --color-incomplete-700: #554d50;
+  --color-incomplete-500: #8c8386;
+  --color-incomplete-200: #d8d1d3;
+  --color-incomplete-100: #ece8e9;
+  --color-incomplete-50: #f6f4f4;
 
-  --shadow-soft: 0 1px 2px rgb(36 20 61 / 0.05), 0 10px 28px -14px rgb(36 20 61 / 0.18);
-  --shadow-card: 0 1px 2px rgb(36 20 61 / 0.06), 0 16px 36px -18px rgb(36 20 61 / 0.24);
-  --shadow-lift: 0 2px 6px rgb(36 20 61 / 0.07), 0 26px 50px -20px rgb(36 20 61 / 0.32);
-  --shadow-glow: 0 10px 30px -10px rgb(255 138 42 / 0.65);
+  --shadow-soft: 0 1px 2px rgb(31 26 28 / 0.05), 0 10px 28px -14px rgb(31 26 28 / 0.16);
+  --shadow-card: 0 1px 2px rgb(31 26 28 / 0.05), 0 16px 36px -18px rgb(31 26 28 / 0.22);
+  --shadow-lift: 0 2px 6px rgb(31 26 28 / 0.06), 0 26px 50px -20px rgb(31 26 28 / 0.28);
+  --shadow-glow: 0 12px 30px -12px rgb(146 43 69 / 0.6);
 
   --radius-4xl: 2rem;
 
@@ -218,16 +221,16 @@
 
   /* One consistent, highly visible focus indicator. Dark surfaces switch to orange. */
   :focus-visible {
-    outline: 3px solid var(--focus-ring, var(--color-plum-600));
+    outline: 3px solid var(--focus-ring, var(--color-wine-600));
     outline-offset: 3px;
   }
 
   .on-dark {
-    --focus-ring: var(--color-pumpkin-400);
+    --focus-ring: var(--color-pumpkin-300);
   }
 
   ::selection {
-    background-color: var(--color-pumpkin-200);
+    background-color: var(--color-wine-200);
     color: var(--color-night-900);
   }
 
@@ -247,22 +250,38 @@
   letter-spacing: -0.02em;
 }
 
-/* Fine noise-free paper texture used on cream sections. */
+/* Cream canvas with a whisper of burgundy and candlelight. */
 @utility bg-paper {
   background-color: var(--color-cream);
   background-image:
-    radial-gradient(circle at 12% 8%, rgb(110 74 166 / 0.07), transparent 42%),
-    radial-gradient(circle at 88% 0%, rgb(255 138 42 / 0.07), transparent 38%);
+    radial-gradient(circle at 12% 8%, rgb(146 43 69 / 0.05), transparent 42%),
+    radial-gradient(circle at 88% 0%, rgb(255 189 133 / 0.12), transparent 38%);
 }
 
-/* The night sky used by the hero and dark bands. */
-@utility bg-night {
-  background-color: var(--color-night-900);
+/* Hero canvas: crisp white fading into cream, with a soft glow behind Boo. */
+@utility bg-hero {
+  background-color: #ffffff;
   background-image:
-    radial-gradient(ellipse 60% 55% at 78% 38%, rgb(132 98 189 / 0.45), transparent 70%),
-    radial-gradient(ellipse 45% 40% at 12% 92%, rgb(255 138 42 / 0.16), transparent 70%),
-    radial-gradient(ellipse 70% 60% at 30% 0%, rgb(61 37 102 / 0.9), transparent 75%),
-    linear-gradient(180deg, var(--color-night-950) 0%, var(--color-night-900) 55%, var(--color-night-800) 100%);
+    radial-gradient(ellipse 55% 60% at 78% 42%, rgb(247 229 234 / 0.95), transparent 70%),
+    radial-gradient(ellipse 40% 35% at 8% 95%, rgb(255 214 179 / 0.35), transparent 70%),
+    linear-gradient(180deg, #ffffff 0%, #fffdfb 100%);
+}
+
+/* Refined burgundy band for high-emphasis panels (CTA, checklist header). */
+@utility bg-accent-band {
+  background-color: var(--color-wine-700);
+  background-image:
+    radial-gradient(ellipse 60% 80% at 85% 10%, rgb(220 159 174 / 0.28), transparent 70%),
+    radial-gradient(ellipse 50% 60% at 0% 100%, rgb(255 189 133 / 0.14), transparent 70%),
+    linear-gradient(135deg, var(--color-wine-800) 0%, var(--color-wine-700) 55%, var(--color-wine-600) 100%);
+}
+
+/* Subtle glass surface for cards that sit on tinted canvases. */
+@utility glass {
+  background-color: rgb(255 255 255 / 0.78);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgb(236 225 226 / 0.95);
 }
 
 /* Screen-reader-only text that becomes visible on focus (skip link). */

@@ -8,7 +8,7 @@ import { cn } from "@/utils/cn";
 
 function Bat({ className, flap = true }: { className?: string; flap?: boolean }) {
   return (
-    <svg viewBox="0 0 64 28" className={className} aria-hidden="true" focusable="false">
+    <svg viewBox="0 0 64 28" width="64" height="28" className={className} aria-hidden="true" focusable="false">
       <g
         className={cn(flap && "motion-safe:animate-flutter")}
         style={{ transformBox: "fill-box", transformOrigin: "center" }}
@@ -22,7 +22,7 @@ function Bat({ className, flap = true }: { className?: string; flap?: boolean })
 
 export function BatFlock({ className }: { className?: string }) {
   return (
-    <div className={cn("text-plum-300", className)} aria-hidden="true">
+    <div className={cn("text-wine-300", className)} aria-hidden="true">
       <Bat className="w-14" />
       <Bat className="ml-16 -mt-2 w-9 [animation-delay:120ms]" />
       <Bat className="ml-6 mt-1 w-7" />
@@ -30,12 +30,12 @@ export function BatFlock({ className }: { className?: string }) {
   );
 }
 
-/** A single bat drifting slowly across a dark section. */
+/** A single bat drifting slowly across the hero. */
 export function DriftingBat({ className }: { className?: string }) {
   return (
     <div
       aria-hidden="true"
-      className={cn("pointer-events-none absolute left-0 text-plum-400/60 motion-safe:animate-drift motion-reduce:hidden", className)}
+      className={cn("pointer-events-none absolute left-0 text-wine-400/60 motion-safe:animate-drift motion-reduce:hidden", className)}
     >
       <Bat className="w-10" />
     </div>
@@ -76,7 +76,7 @@ export function StarField({ className }: { className?: string }) {
           cx={s.x}
           cy={s.y}
           r={s.r * 0.22}
-          fill="#fff8f0"
+          fill="currentColor"
           className="motion-safe:animate-twinkle"
           style={{ animationDelay: `${s.d}s`, transformBox: "fill-box", transformOrigin: "center" }}
           opacity={0.7}
@@ -88,7 +88,7 @@ export function StarField({ className }: { className?: string }) {
 
 export function Sparkle({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" className={className} aria-hidden="true" focusable="false">
+    <svg viewBox="0 0 24 24" width="24" height="24" className={className} aria-hidden="true" focusable="false">
       <path
         d="M12 1.5 L14.1 9.9 L22.5 12 L14.1 14.1 L12 22.5 L9.9 14.1 L1.5 12 L9.9 9.9 Z"
         fill="currentColor"
@@ -99,7 +99,7 @@ export function Sparkle({ className }: { className?: string }) {
 
 export function Cobweb({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 120 120" className={className} aria-hidden="true" focusable="false">
+    <svg viewBox="0 0 120 120" width="120" height="120" className={className} aria-hidden="true" focusable="false">
       <g fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round">
         <path d="M0 0 L120 120" />
         <path d="M0 0 L60 120" />
@@ -120,6 +120,8 @@ export function GhostHem({ className, fill = "var(--color-cream)" }: { className
   return (
     <svg
       viewBox="0 0 1440 64"
+      width="100%"
+      height="56"
       preserveAspectRatio="none"
       className={cn("block h-10 w-full sm:h-14", className)}
       aria-hidden="true"
@@ -129,17 +131,6 @@ export function GhostHem({ className, fill = "var(--color-cream)" }: { className
         d="M0 64 V40 C60 40 60 8 120 8 C180 8 180 40 240 40 C300 40 300 8 360 8 C420 8 420 40 480 40 C540 40 540 8 600 8 C660 8 660 40 720 40 C780 40 780 8 840 8 C900 8 900 40 960 40 C1020 40 1020 8 1080 8 C1140 8 1140 40 1200 40 C1260 40 1260 8 1320 8 C1380 8 1380 40 1440 40 V64 Z"
         fill={fill}
       />
-    </svg>
-  );
-}
-
-export function Moon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 100 100" className={className} aria-hidden="true" focusable="false">
-      <circle cx="50" cy="50" r="46" fill="#fff8f0" opacity="0.08" />
-      <circle cx="50" cy="50" r="36" fill="#fff8f0" opacity="0.1" />
-      <circle cx="50" cy="50" r="26" fill="#ffe9d6" opacity="0.9" />
-      <circle cx="61" cy="42" r="22" fill="#24143d" opacity="0.92" />
     </svg>
   );
 }

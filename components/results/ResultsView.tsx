@@ -106,15 +106,15 @@ export function ResultsView({ needs }: { needs: RequirementId[] }) {
           </ul>
           <Link
             href="#differences"
-            className="mt-5 inline-flex min-h-11 items-center gap-1.5 rounded-full font-bold text-plum-700 underline-offset-4 hover:underline"
+            className="mt-5 inline-flex min-h-11 items-center gap-1.5 rounded-full font-bold text-wine-700 underline-offset-4 hover:underline"
           >
             <ArrowDown aria-hidden="true" className="size-4" />
             Jump to what differs between clinics
           </Link>
         </div>
 
-        <div className="flex gap-3 rounded-2xl border border-plum-200 bg-plum-50 p-4 text-ink-soft">
-          <ShieldAlert aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-plum-700" />
+        <div className="flex gap-3 rounded-2xl border border-wine-200 bg-wine-50 p-4 text-ink-soft">
+          <ShieldAlert aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-wine-700" />
           <p>
             <strong className="text-night-900">“Ready” means confirmed in the demonstration dataset only.</strong> It
             does not guarantee real-world accessibility. Always confirm with the clinic before your visit.

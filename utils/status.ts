@@ -91,7 +91,7 @@ export const MATCH_STATUS_META: Record<MatchStatus, MatchStatusMeta> = {
   },
   NOT_READY: {
     label: "Not ready",
-    headline: "Barrier found",
+    headline: "Barrier detected",
     summary: "At least one need you selected is listed as unavailable.",
     icon: ShieldX,
     tone: "blocked",

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, useTransition } from "react";
 import { ArrowLeft, ArrowRight, Check, CircleAlert, RotateCcw, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { REQUIREMENT_IDS, type RequirementId } from "@/types/api";
@@ -11,7 +11,7 @@ import { hrefWithNeeds } from "@/utils/needs-param";
 import { DEMO_REQUIREMENTS, orderRequirements, REQUIREMENTS } from "@/utils/requirements";
 
 const CATEGORY_STYLES = {
-  Mobility: "bg-plum-100 text-plum-800",
+  Mobility: "bg-wine-100 text-wine-800",
   Communication: "bg-pumpkin-100 text-pumpkin-800",
   Sensory: "bg-ready-50 text-ready-800",
 } as const;
@@ -20,7 +20,9 @@ export function NeedsForm({ initialNeeds, demo }: { initialNeeds: RequirementId[
   const router = useRouter();
   const [selected, setSelected] = useState<RequirementId[]>(initialNeeds);
   const [error, setError] = useState<string | null>(null);
-  const [submitting, setSubmitting] = useState(false);
+  // A transition (not state) so the pending label clears itself once navigation finishes,
+  // even when Next.js restores this page from its Activity cache on Back.
+  const [submitting, startNavigation] = useTransition();
   const firstInputRef = useRef<HTMLInputElement>(null);
   const errorId = useId();
   const countId = useId();
@@ -53,16 +55,15 @@ export function NeedsForm({ initialNeeds, demo }: { initialNeeds: RequirementId[
       firstInputRef.current?.focus();
       return;
     }
-    setSubmitting(true);
-    router.push(hrefWithNeeds("/compare", selected));
+    startNavigation(() => router.push(hrefWithNeeds("/compare", selected)));
   }
 
   return (
     <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-6">
       {demo ? (
-        <div className="flex flex-col gap-4 rounded-3xl border border-plum-200 bg-plum-50 p-5 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-4 rounded-3xl border border-wine-200 bg-wine-50 p-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="flex items-start gap-3 text-ink-soft">
-            <Sparkles aria-hidden="true" className="mt-1 size-5 shrink-0 text-plum-700" />
+            <Sparkles aria-hidden="true" className="mt-1 size-5 shrink-0 text-wine-700" />
             <span>
               <strong className="text-night-900">Demo profile loaded.</strong> Alex uses a power wheelchair and
               needs a fully assisted transfer to the exam table. We&apos;ve preselected four needs. Change anything,
@@ -111,7 +112,7 @@ export function NeedsForm({ initialNeeds, demo }: { initialNeeds: RequirementId[
             <button
               type="button"
               onClick={clearAll}
-              className="inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 font-bold text-plum-700 underline-offset-4 hover:bg-plum-50 hover:underline"
+              className="inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 font-bold text-wine-700 underline-offset-4 hover:bg-wine-50 hover:underline"
             >
               <RotateCcw aria-hidden="true" className="size-4" />
               Clear all
@@ -120,7 +121,7 @@ export function NeedsForm({ initialNeeds, demo }: { initialNeeds: RequirementId[
             <button
               type="button"
               onClick={loadDemo}
-              className="inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 font-bold text-plum-700 underline-offset-4 hover:bg-plum-50 hover:underline"
+              className="inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 font-bold text-wine-700 underline-offset-4 hover:bg-wine-50 hover:underline"
             >
               <Sparkles aria-hidden="true" className="size-4" />
               Use the demo profile
@@ -131,7 +132,7 @@ export function NeedsForm({ initialNeeds, demo }: { initialNeeds: RequirementId[
         <div className="flex flex-col-reverse gap-3 sm:flex-row sm:items-center">
           <Link
             href="/"
-            className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full border-2 border-plum-200 bg-white px-6 text-lg font-bold text-night-900 transition-colors hover:border-plum-500 hover:bg-plum-50"
+            className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full border-2 border-wine-200 bg-white px-6 text-lg font-bold text-night-900 transition-colors hover:border-wine-500 hover:bg-wine-50"
           >
             <ArrowLeft aria-hidden="true" className="size-5" />
             Back
@@ -165,9 +166,9 @@ function NeedCard({
     <label
       className={cn(
         "group relative flex w-full cursor-pointer flex-col gap-4 rounded-3xl border-2 bg-white p-5 shadow-soft transition-[border-color,background-color,box-shadow,transform] duration-200 sm:p-6",
-        "hover:border-plum-400 hover:shadow-card motion-safe:hover:-translate-y-0.5",
-        "has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-offset-3 has-[:focus-visible]:outline-plum-600 has-[:focus-visible]:outline-solid",
-        checked ? "border-plum-600 bg-plum-50 shadow-card" : "border-line",
+        "hover:border-wine-400 hover:shadow-card motion-safe:hover:-translate-y-0.5",
+        "has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-offset-3 has-[:focus-visible]:outline-wine-600 has-[:focus-visible]:outline-solid",
+        checked ? "border-wine-600 bg-wine-50 shadow-card" : "border-line",
       )}
     >
       <input
@@ -185,7 +186,7 @@ function NeedCard({
         <span
           className={cn(
             "flex size-14 items-center justify-center rounded-2xl transition-colors",
-            checked ? "bg-plum-600 text-white" : "bg-plum-100 text-plum-700",
+            checked ? "bg-wine-600 text-white" : "bg-wine-100 text-wine-700",
           )}
         >
           <Icon aria-hidden="true" className="size-7" strokeWidth={2} />
@@ -194,7 +195,7 @@ function NeedCard({
           aria-hidden="true"
           className={cn(
             "flex size-8 items-center justify-center rounded-xl border-2 transition-colors forced-colors:border-[CanvasText]",
-            checked ? "border-plum-600 bg-plum-600 text-white" : "border-plum-500 bg-white text-transparent",
+            checked ? "border-wine-600 bg-wine-600 text-white" : "border-wine-500 bg-white text-transparent",
           )}
         >
           <Check className={cn("size-5", checked && "motion-safe:animate-pop")} strokeWidth={3.2} />
@@ -214,7 +215,7 @@ function NeedCard({
         </span>
         <span
           aria-hidden="true"
-          className={cn("text-sm font-bold", checked ? "text-plum-700" : "text-ink-muted")}
+          className={cn("text-sm font-bold", checked ? "text-wine-700" : "text-ink-muted")}
         >
           {checked ? "Selected" : "Not selected"}
         </span>
